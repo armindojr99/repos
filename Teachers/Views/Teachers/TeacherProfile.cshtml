@@ -1,0 +1,138 @@
+﻿
+@{
+    ViewBag.Title = "TeacherProfile";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="content">
+    <div class="content">
+
+        <div class="page-header">
+            <div class="pull-left">
+                <h3 class="text-dark mb-4">@Model.title @Model.name  @Model.surname</h3>
+            </div>
+            <div class="pull-right">
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
+                    Edit
+                </button>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+
+        <div class="row mb-3">
+            <div class="col-lg-4">
+                <div class="card mb-3">
+                    <div class="card-body text-center shadow">
+                        <img class="rounded-circle mb-3 mt-4" src="~/Content/assets/img/account.png" width="160" height="160" alt="My Photo" />
+                        <div class="mb-3"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="row mb-3 d-none">
+                    <div class="col">
+                        <div class="card text-white bg-primary shadow">
+                            <div class="card-body">
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <p class="m-0">Peformance</p>
+                                        <p class="m-0"><strong>65.2%</strong></p>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                                </div>
+                                <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card text-white bg-success shadow">
+                            <div class="card-body">
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <p class="m-0">Peformance</p>
+                                        <p class="m-0"><strong>65.2%</strong></p>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                                </div>
+                                <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="card shadow mb-3">
+                            <div class="card-header py-3">
+                                <p class="text-primary m-0 font-weight-bold">Details</p>
+                            </div><div class="card-body">
+                                <form>
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label><strong>Employee Number</strong></label>
+                                                <input class="form-control" type="text" placeholder=@Model.employee_number readonly="readonly" />
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label><strong>Title</strong></label>
+                                                <input class="form-control" type="text" placeholder=@Model.title readonly="readonly" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="first_name"><strong>First Name</strong></label>
+                                                <input class="form-control" type="text" placeholder=@Model.name readonly="readonly" />
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="last_name"><strong>Last Name</strong></label>
+                                                <input class="form-control" type="text" placeholder=@Model.surname readonly="readonly" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="last_name"><strong>Email</strong></label><input class="form-control" type="email" placeholder=@Model.email readonly="readonly" /></div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card shadow mb-5"></div>
+
+        <div class="card-deck h-100 " style="padding-top: 10px; padding-bottom: 10px;">
+
+            @foreach (var item in ViewBag.Subjects)
+            {
+
+                <div class="card shadow-lg border-left-success col-lg-4">
+                    <div class="card-header py-3 h-100">
+                        <h6 class="text-primary m-0 font-weight-bold" style="font-size: 1.5rem">@item.subject_name</h6>
+                        <h6 class="text-primary m-0 font-weight-bold">Grade @item.grade_number</h6>
+                        <br />
+                        <br />
+                        <p class="text-primary m-0 font-weight-bold " align="right">   </p>
+                        <p class="text-primary m-0 font-weight-bold " align="right">   </p>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+
+</div>
+

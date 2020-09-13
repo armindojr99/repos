@@ -1,0 +1,292 @@
+﻿
+@{
+    ViewBag.Title = "TeacherProfile";
+}
+
+    <div class="container-fluid">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li role="presentation" class="active">
+                <a data-toggle="tab" role="tab" class="nav-link" href="#TProfiles">Student Profile</a>
+            </li>
+            <li role="presentation">
+                <a data-toggle="tab" role="tab" class="nav-link" href="#TClasses"> Classes </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tab-content">
+
+        <div role="tabpanel" id="TProfiles" class="tab-pane fade show active">
+            <br />
+            <div class="container-fluid">
+
+                <div class="page-header">
+                    <div class="pull-left">
+                        <h3 class="text-dark mb-4">Mr. </h3>
+                    </div>
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
+                            Edit
+                        </button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <div class="col-lg-4">
+                        <div class="card mb-3">
+                            <div class="card-body text-center shadow">
+                                <img class="rounded-circle mb-3 mt-4" src="Content/assets/img/account.png" width="160" height="160" alt="My Photo" />
+                                <div class="mb-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row mb-3 d-none">
+                            <div class="col">
+                                <div class="card text-white bg-primary shadow">
+                                    <div class="card-body">
+                                        <div class="row mb-2">
+                                            <div class="col">
+                                                <p class="m-0">Peformance</p>
+                                                <p class="m-0"><strong>65.2%</strong></p>
+                                            </div>
+                                            <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                                        </div>
+                                        <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card text-white bg-success shadow">
+                                    <div class="card-body">
+                                        <div class="row mb-2">
+                                            <div class="col">
+                                                <p class="m-0">Peformance</p>
+                                                <p class="m-0"><strong>65.2%</strong></p>
+                                            </div>
+                                            <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                                        </div>
+                                        <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card shadow mb-3">
+                                    <div class="card-header py-3">
+                                        <p class="text-primary m-0 font-weight-bold">Details</p>
+                                    </div><div class="card-body">
+                                        <form>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label><strong>Student Number</strong></label>
+                                                        <input class="form-control" type="text" placeholder=""  readonly="readonly" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="Number_of_Classes"><strong>Number of Classes</strong></label>
+                                                        <input class="form-control" type="text" placeholder="2" readonly="readonly" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="first_name"><strong>First Name</strong></label>
+                                                        <input class="form-control" type="text" placeholder=""  readonly="readonly" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="last_name"><strong>Last Name</strong></label>
+                                                        <input class="form-control" type="text" placeholder=""  readonly="readonly" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="date_of_birth"><strong>Date of Birth</strong></label>
+                                                        <input class="form-control" type="text" placeholder="21 April 2000" readonly="readonly" />
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label><strong>Gender</strong></label>
+                                                        <input class="form-control" type="text" placeholder="Male" readonly="readonly" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label for="last_name"><strong>Email</strong></label><input class="form-control" type="email" placeholder=@Session["email_address"].ToString()  readonly="readonly" /></div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card shadow mb-5"></div>
+            </div>
+        </div>
+
+        <div role="tabpanel" id="TClasses" class="tab-pane fade in ">
+
+            <div class="container-fluid">
+                <br />
+                <!--You will need a nested loop here: example in python-->
+                <!--For i in range(1,3):
+                    for j in range(1,3): j is the class-->
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card shadow">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6>Mathematics Class10</h6>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-striped table-hover mydatatable" style="width: 100%">
+                                    <tbody>
+                                        <tr>
+                                            <td>Teacher</td>
+                                            <td>Miss Mbali Xulu</td>
+                                        </tr>
+                                        <tr>
+                                            <td>No of Tests</td>
+                                            <td>7</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tests Passed</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tests Failed</td>
+                                            <td>2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Average</td>
+                                            <td>65</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="card shadow">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6>Mathematics Class10</h6>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-striped table-hover mydatatable" style="width: 100%">
+                                    <tbody>
+                                        <tr>
+                                            <td>Teacher</td>
+                                            <td>Miss Mbali Xulu</td>
+                                        </tr>
+                                        <tr>
+                                            <td>No of Tests</td>
+                                            <td>7</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tests Passed</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tests Failed</td>
+                                            <td>2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Average</td>
+                                            <td>65</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card shadow">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6>Mathematics Class10</h6>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-striped table-hover mydatatable" style="width: 100%">
+                                    <tbody>
+                                        <tr>
+                                            <td>Teacher</td>
+                                            <td>Miss Mbali Xulu</td>
+                                        </tr>
+                                        <tr>
+                                            <td>No of Tests</td>
+                                            <td>7</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tests Passed</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tests Failed</td>
+                                            <td>2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Average</td>
+                                            <td>65</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="card shadow">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6>Mathematics Class10</h6>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-striped table-hover mydatatable" style="width: 100%">
+                                    <tbody>
+                                        <tr>
+                                            <td>Teacher</td>
+                                            <td>Miss Mbali Xulu</td>
+                                        </tr>
+                                        <tr>
+                                            <td>No of Tests</td>
+                                            <td>7</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tests Passed</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tests Failed</td>
+                                            <td>2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Average</td>
+                                            <td>65</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>

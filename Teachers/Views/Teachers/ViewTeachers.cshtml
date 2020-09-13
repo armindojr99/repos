@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "ViewTeachers";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    ViewBag.Heading = "View Teachers";
+}
+
+<div class="content">
+    <div class="page-header">
+        <div class="pull-left">
+            <h2 class="text-dark mb-4">Teachers</h2>
+        </div>
+        <div class="pull-right">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                &plus;
+            </button>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+
+    <!--Teachers table-->
+    <div class="card shadow">
+
+        <div class="card-header py-3">
+            <p class="text-primary m-0 font-weight-bold">All Teachers</p>
+        </div>
+
+        <div class="card-body">
+            <!--div class="container mb-3 mt-3"-->
+            <table class="table table-striped table-hover mydatatable" style="width: 100%">
+                <thead>
+                    <tr>
+                        <th>Staff ID</th>
+                        <th>Title</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Email Address</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.employee_number</td>
+                            <td>@item.title</td>
+                            <td>@item.name</td>
+                            <td>@item.surname</td>
+                            <td>@item.email</td>
+                            <td>
+                                @Html.ActionLink("I", "TeacherProfile", new { employee_number = @item.employee_number }, new { @class = "btn btn-success btn-circle btn-sm xyz" })
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <!--/div-->
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">New Teacher</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="box">
+                    @using (Html.BeginForm("AddTeacher", "Teachers", FormMethod.Post))
+                    {
+                        <form>
+                            <div>
+                                <input type="text" name="title" required>
+                                <label for="title" class="label-name">
+                                    <span>
+                                        Title
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div>
+                                <input type="text" name="first_name" required>
+                                <label for="firt_name" class="label-name">
+                                    <span>
+                                        First Name
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div>
+                                <input type="text" name="last_name" required>
+                                <label for="last_name" class="label-name">
+                                    <span>
+                                        Last Name
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div>
+                                <input type="text" name="email" required>
+                                <label for="email" class="label-name">
+                                    <span>
+                                        Email Address
+                                    </span>
+                                </label>
+                            </div>
+
+
+                            <input type="submit" name="" value="Add Teacher">
+
+                        </form>
+                    }
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "MySubjects";
+    Layout = "~/Views/Shared/StudentLayout.cshtml";
+}
+
+<div class="content">
+    <h3 class="text-left text-dark mb-1">My Subjects</h3>
+
+
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+
+            <div class="col-lg-4">
+                <a href="Assessments/?class_id=@item.class_id">
+                    <div class="card card-chart">
+                        <div class="card-header">
+                            <h5 class="card-category">@item.teacher</h5>
+                            <h2>@item.subject</h2>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>
+

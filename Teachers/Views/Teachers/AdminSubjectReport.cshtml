@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "AdminSubjectReport";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<div class="content">
+    <h3 class="text-left text-dark mb-1 text-center">Select Subject</h3>
+
+
+    <div class="card-deck h-100 " style="padding-top: 10px; padding-bottom: 10px;">
+
+        @foreach (var item in Model)
+        {
+
+            <div class="card shadow-lg border-left-success col-lg-4">
+                <a href=@Url.Action("AdminFinalMarks", new { class_id = item.ClassID })>
+                    <div class="card-header py-3 h-100">
+                        <h6 class="text-primary m-0 font-weight-bold" style="font-size: 1.5rem">@item.subject_name</h6>
+                        <h6 class="text-primary m-0 font-weight-bold">Grade @item.grade_number</h6>
+                        <br />
+                        <br />
+                        <p class="text-primary m-0 font-weight-bold " align="right">   </p>
+                        <p class="text-primary m-0 font-weight-bold " align="right">   </p>
+                    </div>
+                    <div class="card-body">
+                        <p class="m-0">
+
+                        </p>
+                    </div>
+                    <a href="ViewAssessments/?class_id=@item.ClassID">
+                    </a>
+            </div>
+        }
+    </div>
+</div>
+

@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "FinalMark";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content">
+    <h1>@ViewBag.head2 - Report Review</h1>
+    <!--Homeroom Classes Table-->
+    <br />
+    <div class="row">
+        <div class="card">
+            <div class="card-header mb-0">
+                <h3 class="card-title">Students</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-hover mydatatable" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Average</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.fname</td>
+                                <td>@item.lname</td>
+                                <td>@item.mark</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+

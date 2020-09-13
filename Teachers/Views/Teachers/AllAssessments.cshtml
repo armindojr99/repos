@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "All Assessments";
+}
+
+<div class="content">
+    <h2 class="text-dark mb-4" style='text-align:center;'>All Assessments</h2>
+
+
+
+    <!--Past Due Table-->
+    <div class="card shadow">
+
+        <div class="card-header py-3">
+            <p class="text-primary m-0 font-weight-bold">Past Due</p>
+        </div>
+
+        <div class="card-body">
+            <div class="container mb-3 mt-3">
+                <table class="table table-striped table-hover mydatatable" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Subject</th>
+                            <th>Grade</th>
+                            <th>Type</th>
+                            <th>Title</th>
+                            <th>Contribution</th>
+                            <th>Term</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if (DateTime.Parse(item.date) < DateTime.Now)
+                            {
+                                <tr>
+                                    <td>@item.date</td>
+                                    <td>@item.subject</td>
+                                    <td>@item.grade</td>
+                                    <td>@item.type</td>
+                                    <td>@item.title</td>
+                                    <td class="justify-content-center">@item.contribution</td>
+                                    <td class="justify-content-center">@item.term</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <!--Upcoming Assessments table-->
+    <div class="card shadow">
+
+        <div class="card-header py-3">
+            <p class="text-primary m-0 font-weight-bold">Upcoming Assessments</p>
+        </div>
+
+        <div class="card-body">
+            <div class="container mb-3 mt-3">
+                <table class="table table-striped table-hover mydatatable" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Subject</th>
+                            <th>Grade</th>
+                            <th>Type</th>
+                            <th>Title</th>
+                            <th>Contribution</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if (DateTime.Parse(item.date) >= DateTime.Now)
+                            {
+                                <tr>
+                                    <td>@item.date</td>
+                                    <td>@item.subject</td>
+                                    <td>@item.grade</td>
+                                    <td>@item.type</td>
+                                    <td>@item.title</td>
+                                    <td class="justify-content-center">@item.contribution</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style type="text/css">
+
+    h1 {
+        color: green;
+    }
+
+    .xyz {
+        background-size: auto;
+        text-align: center;
+        padding-top: 100px;
+    }
+
+    .btn-circle.btn-sm {
+        width: 30px;
+        height: 30px;
+        padding: 6px 0px;
+        border-radius: 15px;
+        font-size: 8px;
+        text-align: center;
+    }
+
+    .btn-circle.btn-md {
+        width: 50px;
+        height: 50px;
+        padding: 7px 10px;
+        border-radius: 25px;
+        font-size: 10px;
+        text-align: center;
+    }
+
+    .btn-circle.btn-xl {
+        width: 70px;
+        height: 70px;
+        padding: 10px 16px;
+        border-radius: 35px;
+        font-size: 12px;
+        text-align: center;
+    }
+</style> 

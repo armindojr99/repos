@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Contribution";
+}
+
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="text-primary m-0 font-weight-bold">Term Setup</h6>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-hover mydatatable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Term</th>
+                        <th>Assesment</th>
+                        <th>Contribution</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <select id="myList">
+                                    <option value="1">Term 1</option>
+                                    <option value="2">Term 2</option>
+                                    <option value="3">Term 3</option>
+                                    <option value="4">Term 4</option>
+                                </select>
+                            </td>
+
+                            <td>
+                                @item.assessment_name
+                            </td>
+
+                            <td>
+                                <input type="number" name="contr" value="@item.assessment_constribution" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

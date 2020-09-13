@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Add Assessment";
+    ViewBag.Heading = Session["username"];
+}
+
+<div class="content">
+
+    <h2 class="text-dark mb-4">Add Assessment</h2>
+    @using (Html.BeginForm("AddAssessment", "Teachers"))
+    {
+        <p>
+            <div>
+                <label>Assessment Name</label>
+            </div>
+            <input type="text" name="name" />
+        </p>
+
+        <p>
+            <div>
+                <label>Assessment Type</label>
+            </div>
+            <input type="text" name="type" />
+        </p>
+
+        <p>
+            <div>
+                <label>Assessment Date</label>
+            </div>
+            <input type="date" name="date" />
+
+        </p>
+
+        <p>
+            <div>
+                <label>Assessment Contribution</label>
+            </div>
+            <input type="number" name="contr" />
+        </p>
+
+        <p>
+            <div>
+                <label>Term</label>
+            </div>
+            <input type="number" name="term" />
+        </p>
+
+        <p>
+            <input type="submit" value=" Submit" class="btn btn-success btn-group" />
+
+            <script>
+            function goBack() {
+                window.history.back();
+            }
+            </script>
+
+            <button type="button" onclick="goBack();" class="btn btn-success btn-group">Back </button>
+
+
+            <a href=~/Teachers/Homepage class="btn btn-success btn-group" role="button">Home</a>
+        </p>
+
+    }
+</div>

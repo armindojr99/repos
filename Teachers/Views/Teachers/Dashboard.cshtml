@@ -1,0 +1,493 @@
+﻿﻿
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!-- START -->
+
+
+<div class="content">
+
+    <!-- These are the small cards on the top left (6 of them) -->
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="row">
+                <div class="col-md-4 col-xl-4 mb-4">
+                    <div class="card shadow border-left-primary py-2">
+                        <div class="card-body">
+                            <div class="row align-items-center no-gutters">
+                                <div class="col mr-2">
+                                    <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Classes</span></div>
+                                    <div class="text-dark font-weight-bold h5 mb-0"><span>@ViewBag.Classes</span></div>
+                                </div>
+                                <div class="col-auto"><i class="fas fa-users fa-2x text-gray-300"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4 mb-4">
+                    <div class="card shadow border-left-success py-2">
+                        <div class="card-body">
+                            <div class="row align-items-center no-gutters">
+                                <div class="col mr-2">
+                                    <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Students</span></div>
+                                    <div class="text-dark font-weight-bold h5 mb-0"><span>@ViewBag.Students</span></div>
+                                </div>
+                                <div class="col-auto"><i class="fas fa-user fa-2x text-gray-300"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4 mb-4">
+                    <div class="card shadow border-left-info py-2">
+                        <div class="card-body">
+                            <div class="row align-items-center no-gutters">
+                                <div class="col mr-2">
+                                    <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span>Tests</span></div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span>@ViewBag.Tests</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto"><i class="fas fa-copy fa-2x text-gray-300"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4 mb-4">
+                    <div class="card shadow border-left-warning py-2">
+                        <div class="card-body">
+                            <div class="row align-items-center no-gutters">
+                                <div class="col mr-2">
+                                    <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span>Overdue</span></div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span>@ViewBag.Overdue</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto"><i class="fas fa-clock fa-2x text-gray-300"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4 mb-4">
+                    <div class="card shadow border-left-danger py-2">
+                        <div class="card-body">
+                            <div class="row align-items-center no-gutters">
+                                <div class="col mr-2">
+                                    <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span>Fail</span></div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span>@ViewBag.Risk</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto"><i class="fas fa-exclamation-circle fa-2x text-gray-300"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4 mb-4">
+                    <div class="card shadow border-left-success py-2">
+                        <div class="card-body">
+                            <div class="row align-items-center no-gutters">
+                                <div class="col mr-2">
+                                    <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Pass</span></div>
+                                    <div class="text-dark font-weight-bold h5 mb-0"><span>@ViewBag.Pass</span></div>
+                                </div>
+                                <div class="col-auto"><i class="fas fa-user-plus fa-2x text-gray-300"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--This is the mini calendar on the top left, it requires the system to obtain the 3 upcoming assessments -->
+        <div class="col-lg-6 mb-4">
+            <div class="card bg-light shadow">
+                <div class="card-body">
+                    <h3 class="text-dark mb-0">Today:</h3>
+                    <p style="border-bottom: 2px solid rgba(0, 0, 0, 0.08);"></p>
+                    <p class="dateformatting" id="datetime"></p>
+                    <h6 class="text-primary font-weight-bold m-0">Upcoming Assessments:</h6>
+                    <div class="calendar_events">
+                        <!-- Loop 3 through upcoming tests from current date of all classess -->
+
+                        @foreach (var item in ViewBag.Upcoming)
+                        {
+                            if (DateTime.Parse(item.assessment_date) > DateTime.Now)
+                            {
+
+                                <div class="event_item">
+                                    <div class="ei_Copy">@item.assessment_name</div>
+                                </div>
+
+                            }
+                        }
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- This is the Assessment Status Card it might require a NESTED LOOP : LET IT SHOW DATA FOR ALL THE CLASSES WE CAN CHANGE IT LATER -->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card shadow">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="text-primary font-weight-bold m-0">Assessment Status</h6>
+                </div>
+                <div class="card-body">
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item py-1 active">
+                                <div class="row">
+                                    <!--Assessment that has been written and marked-->
+
+                                    @foreach (var item in ViewBag.WrittenAndMarked)
+                                    {
+                                        <div class="col">
+                                            <p class="assessmentname text-center">@item</p>
+                                            <div style="text-align: center; padding-top: 1.5rem; color:#5cb85c;">
+                                                <i class="fas fa-check-circle fa-2x"></i>
+                                            </div>
+                                            <h6 class="text-dark  m-0" style="text-align: center; padding-top: 1.5rem;">Scored</h6>
+                                            <h6 class="text-dark font-weight-bold m-0" style="text-align: center; padding-top: 1.5rem;">Well Done!</h6>
+                                        </div>
+
+                                    }
+
+                                    <!--Assessment that has been written but not marked-->
+
+                                    @foreach (var item in ViewBag.WrittenNotMarked)
+                                    {
+                                        <div class="col">
+                                            <p class="assessmentname text-center">@item</p>
+                                            <div style="text-align: center; padding-top: 1.5rem; color:#d9534f;">
+                                                <i class="fas fa-times-circle fa-2x"></i>
+                                            </div>
+                                            <h6 class="text-dark  m-0" style="text-align: center; padding-top: 1.5rem;">Overdue</h6>
+                                            <div style="text-align: center; padding-top: 1.5rem;">
+                                                <a class="btn btn-secondary btn-sm d-none d-sm-inline-block" role="button" href="#">No Results</a>
+                                            </div>
+                                        </div>
+
+                                    }
+
+                                    <!--Assessment that has not been written-->
+
+                                    @foreach (var item in ViewBag.NotWritten)
+                                    {
+                                        <div class="col">
+                                            <p class="assessmentname text-center">@item</p>
+                                            <div style="text-align: center; padding-top: 1.5rem; color:#f0ad4e;">
+                                                <i class="fas fa-exclamation-circle fa-2x"></i>
+                                            </div>
+                                            <h6 class="text-dark  m-0" style="text-align: center; padding-top: 1.5rem;">Not Written</h6>
+                                            <h6 class="text-dark font-weight-bold m-0" style="text-align: center; padding-top: 1.5rem;"></h6>
+                                        </div>
+
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <!--THIS ROW HAS THE STUDENTS AT RISK AND TOP PERFORMERS -->
+    <div class="row">
+        <div class="col-xl-6">
+
+            <!--THIS IS THE STUDENTS AT RISK CARD-->
+            <div class="card shadow">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="text-danger font-weight-bold m-0">Students at Risk</h6>
+                    <!--THIS DROPDOWN SHOULD ALLOW THE TEACHER TO SELECT WHICH CLASS THEY WANT TO VIEW THE RISKY STUDENTS, ONLY THEIR CLASSES-->
+                    <div class="pull-right">
+                        <div class="container-fluid">
+                            <ul class="nav nav-tabs " id="myTab" role="tablist" style="border-bottom:0px">
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <!--IN THIS EXAMPLE THERE ARE ONLY 2 CLASSES: GEO AND HISTORY. THE CONTENT SHOULD BE SHOWN UNDER THE CARD BODY UNDER TAB-CONTENT OF THE RIGHT CLASS-->
+                                        <li role="presentation" class="active">
+                                            <a data-toggle="tab" role="tab" class="nav-link" href="#Geography">Geography</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a data-toggle="tab" role="tab" class="nav-link" href="#History"> History </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div role="tabpanel" id="Geography" class="tab-pane fade show active">
+                            <!--THIS IS ONE OF THE TABS, IT IS FOR GEO. ITS HREF IS #Geography above-->
+                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item py-1 active">
+                                        <div class="row">
+                                            @{int i = 0;}
+                                            @foreach (var item in ViewBag.LowPerformers)
+                                            {
+                                                <div class="col">
+                                                    <img class="border rounded-circle img-profile" src="~/Images/account.png" style="display: block; margin-left: auto; margin-right: auto;" height="75" width="75">
+                                                    <h6 class="text-dark  m-0" style="text-align: center; padding-top: 1.5rem;">@item</h6>
+                                                    <div style="text-align: center; padding-top: 1.5rem;">
+                                                        <p class="assessmentnamenotmarked"></p>
+                                                    </div>
+                                                </div>
+
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div role="tabpanel" id="History" class="tab-pane fade in ">
+                            <!--THIS IS ONE OF THE TABS, IT IS FOR HISTORY. ITS HREF IS #History above-->
+                            <p>Thi is history, a similar carousel should appear like the above</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-xl-6">
+            <!--THIS IS THE TOP PERFORMERS CARD-->
+            <div class="card shadow">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="text-primary font-weight-bold m-0">Top Performers</h6>
+                    <!--THIS DROPDOWN SHOULD ALLOW THE TEACHER TO SELECT WHICH CLASS THEY WANT TO VIEW THE RISKY STUDENTS, ONLY THEIR CLASSES-->
+                    <div class="pull-right">
+                        <div class="container-fluid">
+                            <ul class="nav nav-tabs " id="myTab2" role="tablist" style="border-bottom:0px">
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <!--IN THIS EXAMPLE THERE ARE ONLY 2 CLASSES: GEO AND HISTORY. THE CONTENT SHOULD BE SHOWN UNDER THE CARD BODY UNDER TAB-CONTENT OF THE RIGHT CLASS-->
+                                        <li role="presentation" class="active">
+                                            <a data-toggle="tab" role="tab" class="nav-link" href="#GeographyTOP">Geography</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a data-toggle="tab" role="tab" class="nav-link" href="#HistoryTOP"> History </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content">
+
+                        <div role="tabpanel" id="GeographyTOP" class="tab-pane fade show active">
+
+                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item py-1 active">
+                                        <div class="row">
+                                            @foreach (var item in ViewBag.TopPerformers)
+                                            {
+                                                <div class="col">
+                                                    <img class="border rounded-circle img-profile" src="~/Images/account.png" style="display: block; margin-left: auto; margin-right: auto;" height="75" width="75">
+                                                    <h6 class="text-dark  m-0" style="text-align: center; padding-top: 1.5rem;">@item</h6>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+
+                </div>
+
+                <div role="tabpanel" id="HistoryTOP" class="tab-pane fade in ">
+                    <p>Thi is history</p>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    </br>
+
+
+    <!--THIS IS THE SCORES PER TEST CARD, THE CODE IS FURTHER DOWN ON A SCRIPT-->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card shadow">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="text-primary font-weight-bold m-0">Average Scores per Test</h6>
+                </div>
+                <div class="card-body">
+                    <canvas id="ScoresPerTestChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+
+    <!--THIS IS THE SCORES PER CLASS CARD, THE CODE IS FURTHER DOWN ON A SCRIPT-->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card shadow">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="text-primary font-weight-bold m-0">Average Scores per Class</h6>
+                </div>
+                <div class="card-body">
+                    <canvas id="ScoresPerClassChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    </br>
+</div>
+    </div>
+    </div>
+
+
+
+<!-- END -->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<br />
+
+
+<a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
+<div />
+<div />
+<script src="Content/assets/js/jquery.min.js"></script>
+<script src="Content/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="Content/assets/js/chart.min.js"></script>
+<script src="Content/assets/js/bs-init.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+<script src="Content/assets/js/theme.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+
+<script href="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script href="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $('.mydatatable').DataTable();
+</script>
+<script src="calendarscript.js"></script>
+
+
+<!--Javascript for chart-->
+<script>
+    let myChart = document.getElementById('ScoresPerClassChart').getContext('2d');
+
+    let ScoresChart = new Chart(myChart, {
+        type: 'bar', //bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data: {
+            labels: ['Geography', 'Maths', 'English', 'Mathematics'],
+            datasets: [{
+                label: 'Averages',
+                data: [
+                    61,
+                    50,
+                    100,
+                    75,
+                    20
+                ],
+            }]
+        },
+        options: {}
+    });
+
+    let myChart2 = document.getElementById('ScoresPerTestChart').getContext('2d');
+
+    let TestScoresChart = new Chart(myChart2, {
+        type: 'line', //bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data: {
+            labels: ['Assessment 1', 'Assessment 2', 'Assessment 3', 'Assessment 4', 'Assessment 5'],
+            datasets: [{
+                label: 'Averages',
+                data: [
+                    61,
+                    50,
+                    82,
+                    75,
+                    20
+                ],
+            }]
+        },
+        options: {}
+    });
+
+    var dt = new Date;
+    document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+</script>
+

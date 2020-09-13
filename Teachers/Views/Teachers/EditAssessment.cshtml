@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Edit Assessment";
+    ViewBag.Heading = "Edit Assessment";
+}
+
+
+<div class="content">
+
+    <h2>Edit Assessment</h2>
+
+    @using (Html.BeginForm("UpdateAssessment", "Teachers"))
+    {
+        <p>
+            <div>
+                <label>Assessment Name</label>
+            </div>
+            <input type="text" name="name" value="@Model.assessment_name" />
+        </p>
+
+        <p>
+            <div>
+                <label>Assessment Type</label>
+            </div>
+            <input type="text" name="type" value="@Model.assessment_type" />
+        </p>
+
+        <p>
+            <div>
+                <label>Assessment Date</label>
+            </div>
+            <input type="date" name="date" value="@Model.assessment_date" />
+
+        </p>
+
+        <p>
+            <div>
+                <label>Assessment Contribution</label>
+            </div>
+            <input type="number" name="contr" value="@Model.assessment_constribution" />
+        </p>
+
+        <p>
+            <div>
+                <label>Term</label>
+            </div>
+            <input type="number" name="term" value="@Model.term" />
+        </p>
+
+        <input type="number" name="ass_id" value="@Model.AssessmentID" hidden="hidden" />
+
+        <p>
+            <input type="submit" value=" Update" class="btn btn-success btn-group" />
+        </p>
+    }
+
+</div>

@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="content">
+    <h2>Are You Sure You Want To Delete The Folowing Assessment?</h2>
+
+    <p>
+        <div>
+            <label>Assessment Name</label>
+        </div>
+        <input type="text" name="name" value="@Model.assessment_name" readonly="readonly" />
+    </p>
+
+    <p>
+        <div>
+            <label>Assessment Type</label>
+        </div>
+        <input type="text" name="type" value="@Model.assessment_type" readonly="readonly" />
+    </p>
+
+    <p>
+        <div>
+            <label>Assessment Date</label>
+        </div>
+        <input type="date" name="date" value="@Model.assessment_date" readonly="readonly" />
+
+    </p>
+
+    <p>
+        <div>
+            <label>Assessment Contribution</label>
+        </div>
+        <input type="number" name="contr" value="@Model.assessment_constribution" readonly="readonly" />
+    </p>
+
+    <p>
+        @Html.ActionLink("Cancel", "ViewAssessments", "Teachers", new { class_id = Session["class_id"].ToString() }, new { @class = "btn btn-success" })
+        @Html.ActionLink("Delete", "DeleteAssessment", "Teachers", new { ass_id = @Model.AssessmentID }, new { @class = "btn btn-danger" })
+    </p>
+</div>

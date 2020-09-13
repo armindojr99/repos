@@ -1,0 +1,536 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <title>
+        Report
+    </title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- Nucleo Icons -->
+    <link href="~/Content/newassets/css/nucleo-icons.css" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link href="~/Content/newassets/css/black-dashboard.css" rel="stylesheet" />
+    <!--link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" /-->
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="~/Content/newassets/demo/demo.css" rel="stylesheet" />
+    <!--DATATABLE-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" />
+    <link rel="shortcut icon" type="image/png" href="~/Content/assets/img/checks_icon.png" />
+
+    <style type="text/css">
+        body {
+            font-family: 'lato', sans-serif;
+        }
+
+        .containerrr {
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+            h2 small {
+                font-size: 0.5em;
+            }
+
+        .responsive-table li {
+            border-radius: 3px;
+            padding: 20px 20px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            vertical-align: middle;
+        }
+
+        .responsive-table .table-header {
+            background-color: #95A5A6;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .responsive-table .table-row {
+            background-color: #ffffff;
+            box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+            vertical-align: middle;
+        }
+
+        .responsive-table .table-row-failure {
+            background-color: #ffe6e6;
+            box-shadow: 0px 0px 9px 0px rgba(216, 183, 213, 0.1);
+            vertical-align: middle;
+        }
+
+        .responsive-table .table-row-distinction {
+            background-color: #daffb3;
+            box-shadow: 0px 0px 9px 0px rgba(216, 183, 213, 0.1);
+            vertical-align: middle;
+        }
+
+        .responsive-table .col-1 {
+            flex-basis: 10%;
+        }
+
+        .responsive-table .col-2 {
+            flex-basis: 40%;
+        }
+
+        .responsive-table .col-3 {
+            flex-basis: 25%;
+        }
+
+        .responsive-table .col-4 {
+            flex-basis: 25%;
+        }
+    </style>
+
+    <script>
+        window.console = window.console || function (t) { };
+    </script>
+
+
+
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+</head>
+
+<body class="change-background white-content">
+    <div class="wrapper">
+        <div class="sidebar" data="blue">
+            <!--
+              Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+            -->
+            <div class="sidebar-wrapper">
+                <div class="logo" style="text-align: center;">
+
+                    <a href="#">
+                        <img src="~/Images/account.png" style='border-radius: 50%;' width="110" height="110" />
+                    </a>
+
+                </div>
+                <ul class="nav">
+                    <li style="text-align: center;">
+                        <a href=#>
+                            <h6>Name:</h6>
+                            <p>@ViewBag.Name</p>
+                        </a>
+                    </li>
+                    <li style="text-align: center;">
+                        <a href=#>
+                            <h6>Surname:</h6>
+                            <p>@ViewBag.Surname</p>
+                        </a>
+                    </li>
+                    <li style="text-align: center;">
+                        <a href=#>
+                            <h6>Date of Birth:</h6>
+                            <p>@ViewBag.DOB</p>
+                        </a>
+                    </li>
+                    <li style="text-align: center;">
+                        <a href=#>
+                            <h6>Identification: </h6>
+                            <p>@ViewBag.Number</p>
+                        </a>
+                    </li>
+                    <li style="text-align: center;">
+                        <a href=#>
+                            <h6>Grade: </h6>
+                            <p>@ViewBag.Grade</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-panel" data="blue">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <div class="navbar-toggle d-inline">
+                            <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <a class="navbar-brand" href="javascript:void(0)">Term @Session["term"] Progress Report</a>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- End Navbar -->
+            <!---->
+            <!---->
+            <!--Start-->
+            <div class="content">
+                <div class="row center" style="align-content: center;">
+                    <img src="~/Images/Nizamiye.png" alt="Nizamiye.png">
+                </div>
+                <ul class="responsive-table" valign="top">
+                    <li class="table-header">
+                        <div class="col col-3">Subject</div>
+                        <div class="col col-1" style="text-align: center;">Level</div>
+                        <div class="col col-1" style="text-align: center;">Symbol</div>
+                        <div class="col col-1" style="text-align: center;">Average</div>
+                        <div class="col col-5">Comment</div>
+                    </li>
+
+                    @foreach (var item in Model)
+                    {
+
+                        using (Html.BeginForm())
+                        {
+                            if (80 <= item.mark && item.mark <= 100)
+                            {
+                                if (80 <= item.mark && item.mark < 90)
+                                {
+                                <li class="table-row-distinction">
+                                    <div class="col col-3" data-label="Subject">@item.subject</div>
+                                    <div class="col col-1" data-label="Level" style="text-align: center;">7</div>
+                                    <div class="col col-1" data-label="Symbol" style="text-align: center;">A</div>
+                                    <div class="col col-1" data-label="Grade" style="text-align: center;">@item.mark</div>
+                                    <div class="col col-5" data-label="Comment">
+                                        You have worked delligently and produced a pleasing result. Well done.
+                                    </div>
+                                </li>
+                                }
+                                else if(90 <= item.mark && item.mark <= 100)
+                                {
+                                <li class="table-row-distinction">
+                                    <div class="col col-3" data-label="Subject">@item.subject</div>
+                                    <div class="col col-1" data-label="Level" style="text-align: center;">7</div>
+                                    <div class="col col-1" data-label="Symbol" style="text-align: center;">A</div>
+                                    <div class="col col-1" data-label="Grade" style="text-align: center;">@item.mark</div>
+                                    <div class="col col-5" data-label="Comment">
+                                        An outstanding achievement from a highly dedicated pupil. Keep it up.
+                                    </div>
+                                </li>
+                                }
+                            }
+                            else if (70 <= item.mark && item.mark <= 79)
+                            {
+
+                                <li class="table-row">
+                                    <div class="col col-3" data-label="Subject">@item.subject</div>
+                                    <div class="col col-1" data-label="Level" style="text-align: center;">6</div>
+                                    <div class="col col-1" data-label="Symbol" style="text-align: center;">B</div>
+                                    <div class="col col-1" data-label="Grade" style="text-align: center;">@item.mark</div>
+                                    <div class="col col-5" data-label="Comment">
+                                        You have produced a good result but you have to work harder to get an "A".
+                                    </div>
+                                </li>
+                            }
+                            else if (60 <= item.mark && item.mark <= 69)
+                            {
+
+                                <li class="table-row">
+                                    <div class="col col-3" data-label="Subject">@item.subject</div>
+                                    <div class="col col-1" data-label="Level" style="text-align: center;">5</div>
+                                    <div class="col col-1" data-label="Symbol" style="text-align: center;">C</div>
+                                    <div class="col col-1" data-label="Grade" style="text-align: center;">@item.mark</div>
+                                    <div class="col col-5" data-label="Comment">
+                                        You have produced a confortable result and you have the capacity to get better.
+                                    </div>
+                                </li>
+                            }
+                            else if (50 <= item.mark && item.mark <= 59)
+                            {
+                                <li class="table-row">
+                                    <div class="col col-3" data-label="Subject">@item.subject</div>
+                                    <div class="col col-1" data-label="Level" style="text-align: center;">4</div>
+                                    <div class="col col-1" data-label="Symbol" style="text-align: center;">D</div>
+                                    <div class="col col-1" data-label="Grade" style="text-align: center;">@item.mark</div>
+                                    <div class="col col-5" data-label="Comment">
+                                        You must spend more time on your school work.
+                                    </div>
+                                </li>
+                            }
+                            else if (40 <= item.mark && item.mark <= 49)
+                            {
+                                <li class="table-row-failure">
+                                    <div class="col col-3" data-label="Subject">@item.subject</div>
+                                    <div class="col col-1" data-label="Level" style="text-align: center;">3</div>
+                                    <div class="col col-1" data-label="Symbol" style="text-align: center;">E</div>
+                                    <div class="col col-1" data-label="Grade" style="text-align: center;">@item.mark</div>
+                                    <div class="col col-5" data-label="Comment">
+                                        You need to show more interest in your work to get better.
+                                    </div>
+                                </li>
+                            }
+                            else if (30 <= item.mark && item.mark <= 39)
+                            {
+                                <li class="table-row-failure">
+                                    <div class="col col-3" data-label="Subject">@item.subject</div>
+                                    <div class="col col-1" data-label="Level" style="text-align: center;">2</div>
+                                    <div class="col col-1" data-label="Symbol" style="text-align: center;">E</div>
+                                    <div class="col col-1" data-label="Grade" style="text-align: center;">@item.mark</div>
+                                    <div class="col col-5" data-label="Comment">
+                                        A very dissatisfactory result. A change in your study method definetely needed.
+                                    </div>
+                                </li>
+                            }
+                            else if (0 <= item.mark && item.mark <= 29)
+                            {
+                                <li class="table-row-failure">
+                                    <div class="col col-3" data-label="Subject">@item.subject</div>
+                                    <div class="col col-1" data-label="Level" style="text-align: center;">1</div>
+                                    <div class="col col-1" data-label="Symbol" style="text-align: center;">E</div>
+                                    <div class="col col-1" data-label="Grade" style="text-align: center;">@item.mark</div>
+                                    <div class="col col-5" data-label="Comment">
+                                        A very dissatisfactory result. A change in your study method is definetely needed.
+                                    </div>
+                                </li>
+                            }
+                        }
+                    }
+                    <li class="table-row">
+                        <div class="col col-7" data-label="Term Average" style="text-align: center; font-weight: bold;">Term Average</div>
+                        <div class="col col-5" style="text-align: center;">
+                            @ViewBag.Average
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!--End-->
+            <!---->
+            <!---->
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" class="nav-link">
+                                Nizamiye
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="copyright">
+                        © PRODIGY 5 UJ
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+    <script src="~/Content/newassets/js/core/jquery.min.js"></script>
+    <script src="~/Content/newassets/js/core/popper.min.js"></script>
+    <script src="~/Content/newassets/js/core/bootstrap.min.js"></script>
+    <script src="~/Content/newassets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+
+
+    <style>
+        .markpassed {
+            background: #5cb85c;
+            color: #fff;
+            margin-bottom: 0;
+            text-transform: uppercase;
+            border-radius: 50%;
+            text-align: center;
+            margin-left: 20px;
+            margin-right: 25px;
+            padding-right: 25px;
+            padding-left: 20px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            font-weight: bold;
+        }
+
+        .markfailed {
+            background: #d9534f;
+            color: #fff;
+            margin-bottom: 0;
+            text-transform: uppercase;
+            border-radius: 15px;
+            text-align: center;
+            margin-left: 20px;
+            margin-right: 25px;
+            padding-right: 25px;
+            padding-left: 20px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            font-weight: bold;
+        }
+    </style>
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--  Google Maps Plugin    -->
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- Chart JS -->
+    <script src="../assets/js/plugins/chartjs.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
+    <script src="../assets/demo/demo.js"></script>
+    <script>
+        $(document).ready(function () {
+            $().ready(function () {
+                $sidebar = $('.sidebar');
+                $navbar = $('.navbar');
+                $main_panel = $('.main-panel');
+
+                $full_page = $('.full-page');
+
+                $sidebar_responsive = $('body > .navbar-collapse');
+                sidebar_mini_active = true;
+                white_color = false;
+
+                window_width = $(window).width();
+
+                fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+
+
+                $('.fixed-plugin a').click(function (event) {
+                    if ($(this).hasClass('switch-trigger')) {
+                        if (event.stopPropagation) {
+                            event.stopPropagation();
+                        } else if (window.event) {
+                            window.event.cancelBubble = true;
+                        }
+                    }
+                });
+
+                $('.fixed-plugin .background-color span').click(function () {
+                    $(this).siblings().removeClass('active');
+                    $(this).addClass('active');
+
+                    var new_color = $(this).data('color');
+
+                    if ($sidebar.length != 0) {
+                        $sidebar.attr('data', new_color);
+                    }
+
+                    if ($main_panel.length != 0) {
+                        $main_panel.attr('data', new_color);
+                    }
+
+                    if ($full_page.length != 0) {
+                        $full_page.attr('filter-color', new_color);
+                    }
+
+                    if ($sidebar_responsive.length != 0) {
+                        $sidebar_responsive.attr('data', new_color);
+                    }
+                });
+
+                $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function () {
+                    var $btn = $(this);
+
+                    if (sidebar_mini_active == true) {
+                        $('body').removeClass('sidebar-mini');
+                        sidebar_mini_active = false;
+                        blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
+                    } else {
+                        $('body').addClass('sidebar-mini');
+                        sidebar_mini_active = true;
+                        blackDashboard.showSidebarMessage('Sidebar mini activated...');
+                    }
+
+                    // we simulate the window Resize so the charts will get updated in realtime.
+                    var simulateWindowResize = setInterval(function () {
+                        window.dispatchEvent(new Event('resize'));
+                    }, 180);
+
+                    // we stop the simulation of Window Resize after the animations are completed
+                    setTimeout(function () {
+                        clearInterval(simulateWindowResize);
+                    }, 1000);
+                });
+
+                $('.switch-change-color input').on("switchChange.bootstrapSwitch", function () {
+                    var $btn = $(this);
+
+                    if (white_color == true) {
+
+                        $('body').addClass('change-background');
+                        setTimeout(function () {
+                            $('body').removeClass('change-background');
+                            $('body').removeClass('white-content');
+                        }, 900);
+                        white_color = false;
+                    } else {
+
+                        $('body').addClass('change-background');
+                        setTimeout(function () {
+                            $('body').removeClass('change-background');
+                            $('body').addClass('white-content');
+                        }, 900);
+
+                        white_color = true;
+                    }
+
+
+                });
+
+                $('.light-badge').click(function () {
+                    $('body').addClass('white-content');
+                });
+
+                $('.dark-badge').click(function () {
+                    $('body').removeClass('white-content');
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Javascript method's body can be found in assets/js/demos.js
+            demo.initDashboardPageCharts();
+
+        });
+    </script>
+    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+    <script>
+        window.TrackJS &&
+            TrackJS.install({
+                token: "ee6fab19c5a04ac1a32a645abde4613a",
+                application: "black-dashboard-free"
+            });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var url = window.location;
+            $('ul.nav li a').each(function () {
+                if (this.href == url) {
+                    $("ul.nav li").each(function () {
+                        if ($(this).hasClass("active")) {
+                            $(this).removeClass("active");
+                        }
+                    });
+                    $(this).parent().addClass('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

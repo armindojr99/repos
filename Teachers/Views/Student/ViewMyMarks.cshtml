@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "ViewMyMarks";
+    Layout = "~/Views/Shared/StudentLayout.cshtml";
+    ViewBag.Heading = Session["surname"].ToString();
+}
+
+<div class="container-fluid">
+    <div class="page-header">
+        <div class="pull-left">
+            <h2 class="text-dark mb-4"></h2>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+
+    <!--Teachers table-->
+    <div class="card shadow">
+
+        <div class="card-header py-3">
+            <p class="text-primary m-0 font-weight-bold"></p>
+        </div>
+
+        <div class="card-body">
+            <!--div class="container mb-3 mt-3"-->
+            <table class="table table-striped table-hover mydatatable" style="width: 100%">
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Assessent Type</th>
+                        <th>Assessment Name</th>
+                        <th>Assessment Date</th>
+                        <th>Mark (/100)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>English</td>
+                        <td>Essay</td>
+                        <td>Things Fall Apart</td>
+                        <td>21-June-2020</td>
+                        <td>76</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <!--/div-->
+        </div>
+    </div>
+</div>
+

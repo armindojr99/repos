@@ -1,0 +1,140 @@
+body{
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    background-image: linear-gradient(125deg,#ecf0f1,#bdc3c7,#7f8c8d,#ecf0f1);
+    background-size: 400% 400%;
+    animation: bganimation 15s infinite;
+}
+
+p{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    margin:25px;
+    width: 60%;
+}
+
+.logo_image{
+    position:relative; 
+    top:100;
+    left:100;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 229px;
+    height: 94.5px;
+}
+
+.box{
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    transform: translate(-50%,-50%);
+    width:400px;
+
+    background: #ffffff;
+    padding:40px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0,0,0,.1);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    border-radius:8px;
+    vertical-align: middle;
+}
+.quote{
+    position:absolute;
+    top:19%;
+}
+.quote_author{
+    position:absolute;
+    top:30%;
+}
+
+
+.box h2{
+    margin: 0 0 40px;
+    padding: 0;
+    color: #2b0c0c;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.box img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+}
+
+.box input{
+    padding: 10px 0;
+    margin-bottom: 30px;
+}
+
+
+.box input{
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: none;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #999; 
+}
+
+.box form div{
+    position: relative;
+}
+
+.box form div label{
+    position:absolute;
+    top:10px;
+    left:0;
+    color: #999;
+    transition: .5s;
+    pointer-events: none;
+}
+
+.box input:focus ~ label,
+.box textarea:focus ~ label,
+.box input:valid ~ label,
+.box textarea:valid ~ label
+{
+    top: -12px;
+    left: 0;
+    color: #13c45d;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.box input:focus,
+.box textarea:focus,
+.box input:valid,
+.box textarea:valid
+{
+    border-bottom: 2px solid #13c45d;
+}
+
+.box input[type = "submit"]{
+    transition:0.25s;
+    border-bottom: none;
+    cursor:pointer;
+    background: #13c45d;
+    color:#fff;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    border-radius: 24px;
+}
+
+.box input[type = "submit"]:hover{
+    background: #2ecc71;
+} 
+
+@keyframes bganimation {
+    0%{
+      background-position: 0% 50%;
+    }
+    50%{
+      background-position: 100% 50%;
+    }
+    100%{
+      background-position: 0% 50%;
+    }
+  }

@@ -1,0 +1,236 @@
+﻿
+@{
+    ViewBag.Title = "AdminReport";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-6 text-left pt-2">
+            <h1 class="pt-2">Reports</h1>
+        </div>
+        <div class="col-md-6 text-right ml-0">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#PublishReportsModal">
+                Publish Reports
+            </button>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="PublishReportsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Send Reports to Parents</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                    <textarea readonly style="width: 100%; height: 250pt;">
+                        Dear Parents and Guardians.,
+                        It has come to the end of another term for the year. In an effort to decrease paper use, you may now access your child's term report through the link bellow. Please note that these results are a result of the effort your child has put in throughout the term and this may be affected by several factors.
+                        Please  click here  to access the term results for your child Name.
+                        For questions related to your child's term report, please contact the school office.
+                        Thank you.
+                    </textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary" href="@Url.Action("SendReportToParents")" role="button">Publish Reports</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal End-->
+
+
+
+    <!--Homeroom Classes Table-->
+    <br />
+    <div class="row">
+        <div class="card">
+            <div class="card-header mb-0">
+                <h3 class="card-title">Homeroom Classes</h3>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-striped table-hover mydatatable" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>Grade</th>
+                            <th>Student Number</th>
+                            <th>Surname</th>
+                            <th>First Name</th>
+                            <div class="text-center">
+                                <th>Reports</th>
+                            </div>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Grade</td>
+                                <td>@item.student_number</td>
+                                <td>@item.last_name</td>
+                                <td>@item.first_name</td>
+                                <td>
+                                    <a class="btn btn-primary btn-circle btn-sm xyz" href="@Url.Action("FinalReport", new { StudentID= item.StudentID })" role="button">I</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<script>
+    $(document).ready(function() {
+      $().ready(function() {
+        $sidebar = $('.sidebar');
+        $navbar = $('.navbar');
+        $main_panel = $('.main-panel');
+
+        $full_page = $('.full-page');
+
+        $sidebar_responsive = $('body > .navbar-collapse');
+        sidebar_mini_active = true;
+        white_color = false;
+
+        window_width = $(window).width();
+
+        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+
+
+        $('.fixed-plugin a').click(function(event) {
+          if ($(this).hasClass('switch-trigger')) {
+            if (event.stopPropagation) {
+              event.stopPropagation();
+            } else if (window.event) {
+              window.event.cancelBubble = true;
+            }
+          }
+        });
+
+        $('.fixed-plugin .background-color span').click(function() {
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data', new_color);
+          }
+
+          if ($main_panel.length != 0) {
+            $main_panel.attr('data', new_color);
+          }
+
+          if ($full_page.length != 0) {
+            $full_page.attr('filter-color', new_color);
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.attr('data', new_color);
+          }
+        });
+
+        $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
+          var $btn = $(this);
+
+          if (sidebar_mini_active == true) {
+            $('body').removeClass('sidebar-mini');
+            sidebar_mini_active = false;
+            blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
+          } else {
+            $('body').addClass('sidebar-mini');
+            sidebar_mini_active = true;
+            blackDashboard.showSidebarMessage('Sidebar mini activated...');
+          }
+
+          // we simulate the window Resize so the charts will get updated in realtime.
+          var simulateWindowResize = setInterval(function() {
+            window.dispatchEvent(new Event('resize'));
+          }, 180);
+
+          // we stop the simulation of Window Resize after the animations are completed
+          setTimeout(function() {
+            clearInterval(simulateWindowResize);
+          }, 1000);
+        });
+
+        $('.switch-change-color input').on("switchChange.bootstrapSwitch", function() {
+          var $btn = $(this);
+
+          if (white_color == true) {
+
+            $('body').addClass('change-background');
+            setTimeout(function() {
+              $('body').removeClass('change-background');
+              $('body').removeClass('white-content');
+            }, 900);
+            white_color = false;
+          } else {
+
+            $('body').addClass('change-background');
+            setTimeout(function() {
+              $('body').removeClass('change-background');
+              $('body').addClass('white-content');
+            }, 900);
+
+            white_color = true;
+          }
+
+
+        });
+
+        $('.light-badge').click(function() {
+          $('body').addClass('white-content');
+        });
+
+        $('.dark-badge').click(function() {
+          $('body').removeClass('white-content');
+        });
+      });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
+
+    });
+</script>
+<script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+<script>
+    window.TrackJS &&
+      TrackJS.install({
+        token: "ee6fab19c5a04ac1a32a645abde4613a",
+        application: "black-dashboard-free"
+      });
+</script>
+<script>
+      $(document).ready(function() {
+    var url = window.location;
+    $('ul.nav li a').each(function () {
+         if (this.href == url) {
+              $("ul.nav li").each(function () {
+                   if ($(this).hasClass("active")) {
+                        $(this).removeClass("active");
+                   }
+              });
+              $(this).parent().addClass('active');
+         }
+    });
+});
+</script>
+

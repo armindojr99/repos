@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "Assessments";
+    Layout = "~/Views/Shared/StudentLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h2 class="text-center">@ViewBag.Subject.subject_name</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5>Upcoming Assessments</h5>
+                </div>
+                <div class="card-body">
+
+                    @foreach (var item in ViewBag.Upcoming)
+                    {
+                        <div class="alert bg-primary">
+                            <span>
+                                <div style="display: inline;">
+                                    @item.name
+                                </div>
+                                <div style="float: right;">
+                                    @item.date
+                                </div>
+                            </span>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5>Past Assessments</h5>
+                </div>
+                <div class="card-body">
+                    <!--If test passed-->
+
+                    @foreach (var item in ViewBag.Marked)
+                    {
+                        if (item.mark >= 50)
+                        {
+                            <div class="alert bg-success">
+                                <span>
+                                    <div style="display: inline;">
+                                        @item.name
+                                    </div>
+                                    <div style="float: right;">
+                                        @item.mark %
+                                    </div>
+                                </span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="alert bg-danger">
+                                <span>
+                                    <div style="display: inline;">
+                                        @item.name
+                                    </div>
+                                    <div style="float: right;">
+                                        @item.mark %
+                                    </div>
+                                </span>
+                            </div>
+
+                        }
+                    }
+                    <!--If test not marked-->
+
+                    @foreach (var item in ViewBag.NotMarked)
+                    {
+                        <div class="alert bg-warning">
+                            <span>
+                                <div style="display: inline;">
+                                    @item
+                                </div>
+                                <div style="float: right;">
+                                    Awaiting results
+                                </div>
+                            </span>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+

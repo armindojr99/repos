@@ -1,0 +1,121 @@
+﻿﻿@model Teachers.Models.Teacher
+
+@{
+    Layout = null;
+    ViewBag.Title = "Login";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link rel="icon" type="image/png" href="~/Content/assets/img/checks_icon.png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/Content/Login_Files/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login_Files/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login_Files/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login_Files/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login_Files/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login_Files/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login_Files/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login_Files/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login_Files/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login_Files/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Login_Files/css/main.css">
+    <!--===============================================================================================-->
+    <link rel="shortcut icon" type="image/png" href="~/Content/assets/img/checks_icon.png" />
+</head>
+<body style="margin-top:0;">
+    <div class="limiter">
+
+        <div class="container-login100">
+            <div class="pull-left">
+                <div style="margin-top: 0">
+                    <img src="~/Content/Login_Files/images/icons/logo_rside.png" style="width: 229px; height: 94.5px;" />
+                </div>
+                <br />
+                <div style="margin-left: 160px;">
+                    <img src="~/Content/Login_Files/images/icons/3818436.png" height="336" width="504" />
+                </div>
+            </div>
+            <div style="margin-left: auto; margin-right: 35px;">
+                <div class="wrap-login100">
+                    @using (Html.BeginForm("Login", "Teachers", FormMethod.Post, new { autocomplete = "off" }))
+                    {
+
+                        <span class="login100-form-title p-b-26">
+                            LOG IN
+                        </span>
+                        <div class="wrap-input100">
+                            <input class="input100" type="text" name="emp_num" autocomplete="off">
+                            <span class="focus-input100" data-placeholder="User Number"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Enter password">
+                            <span class="btn-show-pass">
+                                <i class="zmdi zmdi-eye"></i>
+                            </span>
+                            <input class="input100" type="password" name="pass" autocomplete="off">
+                            <span class="focus-input100" data-placeholder="Password"></span>
+                        </div>
+
+                        <div class="container-login100-form-btn">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+                                <button class="login100-form-btn" type="submit">
+                                    Login
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="text-center p-t-25">
+                            @Html.ActionLink("Forgot Password?", "ForgotPassword", "Teachers", new { @class = "txt2" })
+
+                            <!--a class="txt2" href="#">
+                                Forgot Password?
+                            </a-->
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dropDownSelect1"></div>
+
+
+
+
+    <!--===============================================================================================-->
+    <script src="~/Content/Login_Files/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/Login_Files/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/Login_Files/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/Content/Login_Files/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/Login_Files/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/Login_Files/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/Content/Login_Files/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/Login_Files/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/Login_Files/js/main.js"></script>
+
+</body>
+</html>

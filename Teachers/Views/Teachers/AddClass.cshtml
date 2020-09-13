@@ -1,0 +1,80 @@
+﻿@model Teachers.Models.Teacher
+
+@{
+    Layout = null;
+    ViewBag.Title = "Login";
+}
+
+<html>
+
+<head>
+    <title>
+        Add Teacher
+    </title>
+</head>
+
+<body style="margin:0">
+
+
+    <div style="width:100%; margin:0 auto;">
+
+        <div style="width:100%; min-height:100vh;display:flex;flex-wrap:wrap;justify-content:center;align-content:center;padding:15px;">
+
+            <div style="width:500px;padding-right:55px;padding-left:55px;padding-bottom:50px;padding-top:65px; border-style:solid; border-width:1px">
+
+
+
+                @using (Html.BeginForm("AddClass", "Teachers"))
+                {
+
+                    <span style="display:block;font-size:30px;line-height:1.2;text-align:center; padding-bottom:33px;">
+
+                        <img src="~/Images/Checks.jpg" alt="Prodigy5" style="height:100px" />
+
+                    </span>
+
+                    <br />
+
+                    <div style="width:100%">
+
+                        <input type="text" name="emp_num" style="height:68px; width:100%; text-align:center" placeholder="Employee Number" />
+
+                    </div>
+
+                    <br />
+
+                    <br />
+
+                    <div style="width:100%">
+
+                        <input type="text" name="sub_name" style="height:68px; width:100%;text-align:center" placeholder="Subject" />
+
+                    </div>
+
+                    <br />
+
+                    <div style="width:100%">
+
+                        <input type="number" name="grade" style="height:68px; width:100%; text-align:center" placeholder="Grade" />
+
+                    </div>
+
+                    <br />
+
+
+                    <div style="width:100%">
+
+                        <input type="submit" value="Add" style="height:68px; width:100%; background-color:#4272d7" />
+
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
